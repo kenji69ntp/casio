@@ -1,0 +1,625 @@
+#include <stdio.h>
+#include <math.h>
+#include <conio.h>
+#include <windows.h>
+void nhap_mang(int mang[], int n)
+{
+    for (int i = 0; i < n; i++)
+    {
+        printf("[%d]=", i + 1);
+        scanf("%d", &mang[i]);
+    }
+}
+float trungbinhcong(int mang[], int n)
+{
+    int tong_cac_mang = 0;
+    for (int i = 0; i < n; i++)
+    {
+        tong_cac_mang += mang[i];
+    }
+    float trung_binh_cong = (float)tong_cac_mang / (float)n;
+    return trung_binh_cong;
+}
+int tongcacsotrongmang(int mang[], int n)
+{
+    int tong_cac_mang = 0;
+    for (int i = 0; i < n; i++)
+    {
+        tong_cac_mang += mang[i];
+    }
+    return tong_cac_mang;
+}
+bool kiemtrasonguyento(int so_nao_do)
+{
+    if (so_nao_do < 2)
+    {
+        return false;
+    }
+    for (int i = 2; i <= sqrt(so_nao_do); i++)
+    {
+        if (so_nao_do % i == 0)
+        {
+            return false;
+        }
+    }
+    return true;
+}
+void lietkecacsonguyento(int mang[], int n)
+{
+    for (int i = 0; i < n; i++)
+    {
+        if (kiemtrasonguyento(mang[i]))
+        {
+            printf("%d ", mang[i]);
+        }
+    }
+}
+
+int GTLN(int mang[], int n)
+{
+    int max = mang[0];
+    for (int i = 0; i < n; i++)
+    {
+        if (max < mang[i])
+        {
+            max = mang[i];
+        }
+    }
+    return max;
+}
+int GTNN(int mang[], int n)
+{
+    int min = mang[0];
+    {
+        for (int i = 0; i < n; i++)
+        {
+            if (min > mang[i])
+            {
+                min = mang[i];
+            }
+        }
+    }
+    return min;
+}
+int tinhtongcacso_n(int so_nguyen)
+{
+    int tong_cac_so = 0;
+    for (int i = 1; i <= so_nguyen; i++)
+    {
+        tong_cac_so += i;
+    }
+    return tong_cac_so;
+}
+float tinhcanbachai(int con_so)
+{
+    float can_bac_hai = sqrt(con_so);
+    return can_bac_hai;
+}
+int tinhsomu(int con_so, int so_mu)
+{
+    return pow(con_so, so_mu);
+}
+int tinhgiaithuacuamotso(int con_so)
+{
+    int giai_thua = 1;
+    for (int i = 1; i <= con_so; i++)
+    {
+        giai_thua = giai_thua * i;
+    }
+    return giai_thua;
+}
+void UCLN(int so_a)
+{
+    for (int i = 1; i <= so_a; i++)
+    {
+        if (so_a % i == 0)
+        {
+            printf("%d ", i);
+        }
+    }
+}
+int tongcacsochan(int mang[], int n)
+{
+    int tong_cac_so_chan = 0;
+    for (int i = 0; i < n; i++)
+    {
+        if (mang[i] % 2 == 0)
+        {
+            tong_cac_so_chan += mang[i];
+        }
+    }
+    return tong_cac_so_chan;
+}
+int tongcacsole(int mang[], int n)
+{
+    int tong_cac_so_le = 0;
+    for (int i = 0; i < n; i++)
+    {
+        if (mang[i] % 2 == 1)
+        {
+            tong_cac_so_le += mang[i];
+        }
+    }
+    return tong_cac_so_le;
+}
+int dientichhinhchunhat(int chieudai, int chieurong)
+{
+    return chieudai * chieurong;
+}
+int dientichhinhvuong(int n)
+{
+    return pow(n, 2);
+}
+int dientichhinhbinhhanh(int canhday, int duongcao)
+{
+    return canhday * duongcao;
+}
+float dientichtamgiac(int canhday, int duongcao)
+{
+    float tamgiac = (float)(canhday * duongcao) / 2;
+    return tamgiac;
+}
+float dientichhinhthang(int daylon, int daybe, int duongcao)
+{
+    float hinhthang = (float)(duongcao * (daybe + daylon)) / 2;
+    return hinhthang;
+}
+float dientichhinhthoi(int d1, int d2)
+{
+    float hinhthoi = (float)(d1 * d2) / 2;
+    return hinhthoi;
+}
+float dientichhinhtron(int n)
+{
+    float pi = 3.14;
+    float hinhtron = pi * pow(n, 2);
+    return hinhtron;
+}
+int main()
+{
+    int con_so, so_mu, mang[10000], so_nguyen, n, chon_phuong_an, chon_phuong_an_2, hang_so, chon_phuong_an_3, chon_phuong_an_4, chon_phuong_an_5, chon_phuong_an_6;
+    int x1, x2, x3, y1, y2, y3;
+    float tinh_toa_do_x, tinh_toa_do_y;
+    int chieudai, chieurong;
+    int duongcao;
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 2);
+    do
+    {
+        printf("\t+----------------------------------------+\n");
+        printf("\t|    ==========Xin MOI CHON==========    |\n");
+        printf("\t|    1.Tinh trung binh cong cua mang.    |\n");
+        printf("\t|    2.Tim Max,Min cua mang.             |\n");
+        printf("\t|    3.Tinh tong cac so trong mang.      |\n");
+        printf("\t|    4.Tinh tong cac so tu 1 den n.      |\n");
+        printf("\t|    5.Liet ke cac so nguyen to          |\n");
+        printf("\t|    6.Them.                             |\n");
+        printf("\t|    7.Thoat khoi chuong trinh.   -1-    |\n");
+        printf("\t+----------------------------------------+\n");
+        printf("==>");
+        scanf(" %d", &chon_phuong_an);
+        if (chon_phuong_an == 1)
+        {
+            SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4);
+            printf("\n");
+            printf("Vui long nhap so luong mang(>0):\n");
+            printf("==>");
+            scanf("%d", &n);
+            nhap_mang(mang, n);
+            printf("\t+--------------------------------+\n");
+            printf("\t|Trung binh cong cua mang la:%.1f |\n", trungbinhcong(mang, n));
+            printf("\t+--------------------------------+\n");
+            printf("\n");
+            printf("\n");
+        }
+        else if (chon_phuong_an == 2)
+        {
+            SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 2);
+            printf("\n");
+            printf("Vui long nhap so luong mang:\n");
+            printf("==>");
+            scanf("%d", &n);
+            nhap_mang(mang, n);
+            printf("\t+------------------------+\n");
+            printf("\t [1] MAX=%d               \n", GTLN(mang, n));
+            printf("\t [2] MIN=%d               \n", GTNN(mang, n));
+            printf("\t+------------------------+\n");
+            printf("\vDIT CU MAY");
+            printf("\n");
+            printf("\n");
+        }
+        else if (chon_phuong_an == 3)
+        {
+            SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 14);
+            printf("\n");
+            printf("Vui long nhap so luong mang:\n");
+            printf("==>");
+            scanf("%d", &n);
+            nhap_mang(mang, n);
+            printf("\t+------------------------+\n");
+            printf("\t   Tong cua mang la:%d    \n", tongcacsotrongmang(mang, n));
+            printf("\t+------------------------+\n");
+            printf("\vKo co virut dau yen tam!");
+            printf("Cam on da su dung!!");
+            printf("\n");
+            printf("\n");
+        }
+        else if (chon_phuong_an == 4)
+        {
+            SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4);
+            printf("\n");
+            printf("Vui long nhap so n (1,2,3,..,n):\n");
+            printf("==>");
+            scanf("%d", &so_nguyen);
+            printf("\t+--------------------------------------------+\n");
+            printf("\t     Tong cua day 1,2,3,...,n la: %d", tinhtongcacso_n(so_nguyen));
+            printf("\n");
+            printf("\t+--------------------------------------------+\n");
+            printf("\n");
+            printf("\n");
+        }
+        else if (chon_phuong_an == 5)
+        {
+            SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 112);
+            printf("\n");
+            printf("Vui long nhap so luong mang:\n");
+            printf("==>");
+            scanf("%d", &n);
+            nhap_mang(mang, n);
+            printf("+--------------------------------------------------+\n");
+            printf("    Trong mang co: ");
+            lietkecacsonguyento(mang, n);
+            printf("la so nguyen to\n");
+            printf("+--------------------------------------------------+\n");
+            printf("Co loi gi bao lai nhaa :)\n");
+            printf("Cam on da su dung!!!\n");
+        }
+        else if (chon_phuong_an == 6)
+        {
+            do
+            {
+                printf("\t+----------------------------------------+\n");
+                printf("\t|    ==========Xin MOI CHON==========    |\n");
+                printf("\t|    8.Tim uoc cua 1 so                  |\n");
+                printf("\t|    9.Tinh tong cac so chan le          |\n");
+                printf("\t|    10.Tinh can bac hai cua 1 so.       |\n");
+                printf("\t|    11.Tinh so mu cua mot so.           |\n");
+                printf("\t|    12.Tinh toa do trong tam.           |\n");
+                printf("\t|    13.Them.                            |\n");
+                printf("\t|    14.Quay lai.               -2-      |\n");
+                printf("\t+----------------------------------------+\n");
+                printf("==>");
+                scanf(" %d", &chon_phuong_an_2);
+                if (chon_phuong_an_2 == 8)
+                {
+                    printf("Xin moi nhap so(>0):\n");
+                    scanf("%d", &hang_so);
+                    if (hang_so < 1)
+                    {
+                        printf("+----------------------------+\n");
+                        printf("|    Tinh the eo nao dc cu!  |\n");
+                        printf("|      Nhap lai di cu!       |\n");
+                        printf("+----------------------------+\n");
+                    }
+                    else
+                    {
+                        printf("\n");
+                        printf("\t+----------------------------------+\n");
+                        printf("\t    Uoc cua so %d la:", hang_so);
+                        UCLN(hang_so);
+                        printf("\n");
+                        printf("\t+----------------------------------+\n");
+                        printf("Hentaiz.in\n");
+                        printf("Xnxx.com\n");
+                    }
+                }
+                else if (chon_phuong_an_2 == 9)
+                {
+                    printf("\n");
+                    printf("Vui long nhap so luong mang:\n");
+                    printf("==>");
+                    scanf("%d", &n);
+                    nhap_mang(mang, n);
+                    printf("\t_____________________________________________________________\n");
+                    printf("\t       Tong cac so chan co trong mang la:%d\n", tongcacsochan(mang, n));
+                    printf("\t       Tong cac so le co trong mang la:%d\n", tongcacsole(mang, n));
+                    printf("\t_____________________________________________________________\n");
+                    printf("code lau vloz\n");
+                }
+                else if (chon_phuong_an_2 == 10)
+                {
+                    printf("\n");
+                    printf("Nhap so de tinh can bac hai(n>0):");
+                    scanf("%d", &n);
+                    if (n < 0)
+                    {
+                        printf("DM DA NOI LA LON HON 0\n");
+                        printf("Nhap lai di nao!\n");
+                    }
+                    else
+                    {
+                        printf("\n");
+                        printf("\t+-------------------------------------------+\n");
+                        printf("\t     Ket qua can bac hai la:%.2f\n", tinhcanbachai(n));
+                        printf("\t+-------------------------------------------+\n");
+                        printf("\n");
+                    }
+                }
+                else if (chon_phuong_an_2 == 11)
+                {
+                    printf("\n");
+                    printf("Xin moi nhap so:\n");
+                    printf("==>");
+                    scanf("%d", &n);
+                    printf("Nhap so mu:\n");
+                    printf("==>");
+                    scanf("%d", &so_mu);
+                    printf("\t+--------------------------------------------+\n");
+                    printf("\tKq cua so mu la: %d \n", tinhsomu(n, so_mu));
+                    printf("\t+--------------------------------------------+\n");
+                    printf("code dc tai tro boi fb88 nha cai so mot vn,uy tin,xanh chin\n");
+                    printf("\n");
+                }
+                else if (chon_phuong_an_2 == 12)
+                {
+                    printf("\n");
+                    printf("\t Nhap lan luot cac toa do x trc y sau\n");
+                    printf("Vui long nhap toa do cua diem A(x1,y1):\n");
+                    printf("==>");
+                    scanf("%d%d", &x1, &y1);
+                    printf("Vui long nhap toa do cua diem B(x2,y2):\n");
+                    printf("==>");
+                    scanf("%d%d", &x2, &y2);
+                    printf("Vui long nhap toa do cua diem C(x3,y3):\n");
+                    printf("==>");
+                    scanf("%d%d", &x3, &y3);
+                    tinh_toa_do_x = (float)(x1 + x2 + x3) / 3;
+                    tinh_toa_do_y = (float)(y1 + y2 + y3) / 3;
+                    printf("\t+--------------------------------------+\n");
+                    printf("\t|   Toa do trong tam la G(%.1f;%.1f)     |\n", tinh_toa_do_x, tinh_toa_do_y);
+                    printf("\t+--------------------------------------+\n");
+                    printf("Dang trong qua trinh update!\n");
+                }
+                else if (chon_phuong_an_2 == 13)
+                {
+                    do
+                    {
+                        printf("\t+----------------------------------------+\n");
+                        printf("\t|    ==========Xin MOI CHON==========    |\n");
+                        printf("\t|    15.Tinh giai thua.                  |\n");
+                        printf("\t|    16.Tinh dien tich tat ca cac hinh.  |\n");
+                        printf("\t|    17.Them.                            |\n");
+                        printf("\t|    18.Quay lai.                        |\n");
+                        printf("\t|                                        |\n");
+                        printf("\t|                                        |\n");
+                        printf("\t|                                -3-     |\n");
+                        printf("\t+----------------------------------------+\n");
+                        printf("==>");
+                        scanf("%d", &chon_phuong_an_3);
+                        if (chon_phuong_an_3 == 15)
+                        {
+                            printf("\n");
+                            printf("Xin moi nhap so(n>=0) :\n");
+                            printf("==>");
+                            scanf("%d", &n);
+                            if (n < 0)
+                            {
+                                printf("\t+--------------------+\n");
+                                printf("\t|    ko xac dinh     |\n");
+                                printf("\t+--------------------+\n");
+                            }
+                            else
+                            {
+                                printf("\t+--------------------------------+\n");
+                                printf("\t            %d! = %d", n, tinhgiaithuacuamotso(n));
+                                printf("\n");
+                                printf("\t+--------------------------------+\n");
+                            }
+                        }
+                        else if (chon_phuong_an_3 == 16)
+                        {
+                            do
+                            {
+                                printf("\n");
+                                printf("\t+----------------------------------------+\n");
+                                printf("\t|    ==========TINH DIEN TICH==========  |\n");
+                                printf("\t|    1. Hinh chu nhat.       8.Quay lai. |\n");
+                                printf("\t|    2. Hinh vuong.                      |\n");
+                                printf("\t|    3. Hinh binh hanh.                  |\n");
+                                printf("\t|    4. Hinh tam giac.                   |\n");
+                                printf("\t|    5. Hinh thang.                      |\n");
+                                printf("\t|    6. Hinh thoi.                       |\n");
+                                printf("\t|    7. Them.                    -1-     |\n");
+                                printf("\t+----------------------------------------+\n");
+                                printf("==>");
+                                scanf("%d", &chon_phuong_an_4);
+                                if (chon_phuong_an_4 == 1)
+                                {
+                                    printf("\n");
+                                    printf("Xin moi nhap chieu dai:");
+                                    scanf("%d", &chieudai);
+                                    printf("Xin moi nhap chieu rong:");
+                                    scanf("%d", &chieurong);
+                                    if (chieudai < chieurong)
+                                    {
+                                        printf("\n");
+                                        printf("\t+------------------------------------------+\n");
+                                        printf("\t| Vui long nhap lai (chieu dai>chieu rong) |\n");
+                                        printf("\t+------------------------------------------+\n");
+                                        printf("\n");
+                                    }
+                                    else
+                                    {
+                                        printf("\t+-----------------------------------+\n");
+                                        printf("\t          S=%d\n", dientichhinhchunhat(chieudai, chieurong));
+                                        printf("\t+-----------------------------------+\n");
+                                    }
+                                }
+                                else if (chon_phuong_an_4 == 2)
+                                {
+                                    printf("\n");
+                                    printf("Xin moi nhap canh cua hinh vuong(n>0):");
+                                    scanf("%d", n);
+                                    if (n < 0)
+                                    {
+                                        printf("\n");
+                                        printf("\t+--------------------+\n");
+                                        printf("\t| Vui long nhap lai  |\n");
+                                        printf("\t+--------------------+\n");
+                                        printf("\n");
+                                    }
+                                    else
+                                    {
+                                        printf("\t+-----------------------------------+\n");
+                                        printf("\t          S=%d\n", dientichhinhvuong(n));
+                                        printf("\t+-----------------------------------+\n");
+                                        printf("\n");
+                                    }
+                                }
+                                else if (chon_phuong_an_4 == 3)
+                                {
+                                    printf("\n");
+                                    printf("Nhap canh day:");
+                                    scanf("%d", &n);
+                                    printf("Nhap duong cao:");
+                                    scanf("%d", &duongcao);
+                                    if (n < 0 || duongcao < 0)
+                                    {
+                                        printf("\n");
+                                        printf("\t+--------------------+\n");
+                                        printf("\t| Vui long nhap lai  |\n");
+                                        printf("\t+--------------------+\n");
+                                        printf("\n");
+                                    }
+                                    else
+                                    {
+                                        printf("\t+-----------------------------------+\n");
+                                        printf("\t          S=%d\n", dientichhinhbinhhanh(n, duongcao));
+                                        printf("\t+-----------------------------------+\n");
+                                        printf("\n");
+                                    }
+                                }
+                                else if (chon_phuong_an_4 == 4)
+                                {
+                                    printf("\n");
+                                    printf("Nhap canh day:");
+                                    scanf("%d", &n);
+                                    printf("Nhap duong cao:");
+                                    scanf("%d", &duongcao);
+                                    if (n < 0 || duongcao < 0)
+                                    {
+                                        printf("\n");
+                                        printf("\t+--------------------+\n");
+                                        printf("\t| Vui long nhap lai  |\n");
+                                        printf("\t+--------------------+\n");
+                                        printf("\n");
+                                    }
+                                    else
+                                    {
+                                        printf("\t+-----------------------------------+\n");
+                                        printf("\t          S=%.1f\n", dientichtamgiac(n, duongcao));
+                                        printf("\t+-----------------------------------+\n");
+                                        printf("\n");
+                                    }
+                                }
+                                else if (chon_phuong_an_4 == 5)
+                                {
+                                    printf("\n");
+                                    printf("Nhap day lon:");
+                                    scanf("%d", &chieudai);
+                                    printf("Nhap day be:");
+                                    scanf("%d", &chieurong);
+                                    printf("Nhap duong cao:");
+                                    scanf("%d", &duongcao);
+                                    if (chieudai < 0 || chieurong < 0 || duongcao < 0)
+                                    {
+                                        printf("\n");
+                                        printf("\t+--------------------+\n");
+                                        printf("\t| Vui long nhap lai  |\n");
+                                        printf("\t+--------------------+\n");
+                                        printf("\n");
+                                    }
+                                    else
+                                    {
+                                        printf("\t+-----------------------------------+\n");
+                                        printf("\t          S=%.1f\n", dientichhinhthang(chieudai, chieurong, duongcao));
+                                        printf("\t+-----------------------------------+\n");
+                                        printf("\n");
+                                    }
+                                }
+                                else if (chon_phuong_an_4 == 6)
+                                {
+                                    printf("\n");
+                                    printf("Nhap duong cheo d1:");
+                                    scanf("%d", &chieudai);
+                                    printf("Nhap duong cheo d2:");
+                                    scanf("%d", &chieurong);
+                                    if (chieudai < 0 || chieurong < 0)
+                                    {
+                                        printf("\n");
+                                        printf("\t+--------------------+\n");
+                                        printf("\t| Vui long nhap lai  |\n");
+                                        printf("\t+--------------------+\n");
+                                        printf("\n");
+                                    }
+                                    else
+                                    {
+                                        printf("\t+-----------------------------------+\n");
+                                        printf("\t          S=%.1f\n", dientichhinhthoi(chieudai, chieurong));
+                                        printf("\t+-----------------------------------+\n");
+                                        printf("\n");
+                                    }
+                                }
+                                else if (chon_phuong_an_4 == 7)
+                                {
+                                    do
+                                    {
+                                        printf("\n");
+                                        printf("\t+----------------------------------------+\n");
+                                        printf("\t|    ==========TINH DIEN TICH==========  |\n");
+                                        printf("\t|    1. Hinh tron.                       |\n");
+                                        printf("\t|    2. Quay lai.                        |\n");
+                                        printf("\t|                                 -2-    |\n");
+                                        printf("\t+----------------------------------------+\n");
+                                        printf("==>");
+                                        scanf("%d", &chon_phuong_an_5);
+                                        if (chon_phuong_an_5 == 1)
+                                        {
+                                            printf("\n");
+                                            printf("Nhap ban kinh:");
+                                            scanf("%d", &n);
+                                            if (n < 0)
+                                            {
+                                                printf("\n");
+                                                printf("\t+--------------------+\n");
+                                                printf("\t| Vui long nhap lai  |\n");
+                                                printf("\t+--------------------+\n");
+                                                printf("\n");
+                                            }
+                                            else
+                                            {
+                                                printf("\t+-----------------------------------+\n");
+                                                printf("\t          S=%.1f\n", dientichhinhtron(n));
+                                                printf("\t+-----------------------------------+\n");
+                                                printf("\n");
+                                            }
+                                        }
+                                    } while (chon_phuong_an_5 != 2);
+                                }
+                            } while (chon_phuong_an_4 != 8);
+                        }
+                        else if (chon_phuong_an_3 == 17)
+                        {
+                            printf("\n");
+                            printf("\t+--------------------+\n");
+                            printf("\t|   Dang cap nhat    |\n");
+                            printf("\t+--------------------+\n");
+                            printf("\n");
+                        }
+                    } while (chon_phuong_an_3 != 18);
+                }
+            } while (chon_phuong_an_2 != 14);
+        }
+    } while (chon_phuong_an != 7);
+    getch();
+    return 0;
+}
